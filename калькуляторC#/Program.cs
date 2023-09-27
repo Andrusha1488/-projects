@@ -110,7 +110,7 @@ class Calculator
                     int stepen;
                     if (!int.TryParse(Console.ReadLine(), out stepen))
                     {
-                        Console.WriteLine("Ошибка! Введите целое число.");
+                        Console.WriteLine("Ошибка");
                         continue;
                     }
 
