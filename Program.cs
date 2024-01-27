@@ -4,120 +4,122 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp12
+namespace ConsoleApp11
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int choice;
-            bool y = true;
-            while (y)
-            {
-                Console.WriteLine("Выберите программу:");
-                Console.WriteLine("1 - угадай число ");
-                Console.WriteLine("2 - таблица умножения");
-                Console.WriteLine("3 - делители числа");
-                Console.WriteLine("4 - выйти из программы");
-                choice = Convert.ToInt32(Console.ReadLine());
+            float a;
+            float b;
+            float c;
+            float e = 1;
+            int operation =0;
 
-                switch (choice)
+            while (operation != 9)
+            {
+
+                Console.WriteLine("Добро пожаловать в калькулятор! Что вы хотите сделать?");
+            Console.WriteLine("1. Сложение двух чисел");
+            Console.WriteLine("2. Вычитание одного числа из другого");
+            Console.WriteLine("3. Перемножение двух чисел");
+            Console.WriteLine("4. Деление двух чисел");
+            Console.WriteLine("5. Возведение первого числа в степень второго");
+            Console.WriteLine("6. Квадратный корень числа");
+            Console.WriteLine("7. Найти один процент от числа");
+            Console.WriteLine("8. Факториал числа");
+            Console.WriteLine("9. Выйти из программы");
+            operation = Convert.ToInt32(Console.ReadLine());
+
+            
+            
+                switch (operation)
                 {
                     case 1:
-
-                        Random rnd = new Random();
-                        int number = rnd.Next(0, 101);
-                        int tries;
-                        
-
-                        Console.WriteLine("загадано число от 1 до 100. Попробуй угадать!");
-
-                        for (int i = 0; i < int.MaxValue; i++)
-                        {
-                            tries = Convert.ToInt32(Console.ReadLine());
-                            if (tries > number)
-                            {
-                                Console.WriteLine("Нужно меньше");
-                            }
-                            else if (tries < number)
-                            {
-                                Console.WriteLine("Нужно больше");
-                            }
-                            else if (tries == number)
-                            {
-                                Console.WriteLine($"Молодец! Ты угадал число {number} за {i + 1} попыток");
-                                break;
-                            }
-                        }
-
-                    break;
-
-
-
-
-
-                    case 2:
-
-                        int[,] mnoj = new int[9, 9];
-
-                        for (int j = 0; j < mnoj.GetLength(0); j++)
-                        {
-                            for (int k = 0; k < mnoj.GetLength(1); k++)
-                            {
-                                if (j == 0 || k == 0)
-                                {
-                                    mnoj[k, j] = (j + 1) * (k + 1); //пустая таблица умножения
-                                }
-                            }
-
-                        }
-
-                        //теперь перемножение
-
-                        for (int j = 0; j < mnoj.GetLength(0); j++)
-                        {
-                            for (int k = 0; k < mnoj.GetLength(1); k++)
-                            {
-                                if (j != 0 || k != 0)
-                                {
-                                    mnoj[k, j] = (j + 1) * (k + 1);
-                                }
-                                Console.Write(mnoj[k, j] + "\t");
-                            }
-                            Console.WriteLine();
-                        }
+                        Console.WriteLine("Введите первое число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        b = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine($"Сумма {a} и {b} равна {a + b}");
                         break;
 
-
-
-
+                    case 2:
+                        Console.WriteLine("Введите первое число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        b = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine($"Разность {a} и {b} равна {a - b}");
+                        break;
 
                     case 3:
-                        int a;
-
-                        Console.WriteLine("Введите целое число: ");
-                        a = Convert.ToInt32(Console.ReadLine());
-
-                        Console.Write($"Делители числа {a}: ");
-
-                        for (int j = a; j != 0; j--)
-                        {
-                            if (a % j == 0)
-                            {
-                                Console.Write($" {j} ");
-                            }
-                        }
+                        Console.WriteLine("Введите первое число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        b = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine($"Произведение {a} и {b} равно {a * b}");
                         break;
 
                     case 4:
-                        y = false;
+                        Console.WriteLine("Введите первое число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        b = Convert.ToSingle(Console.ReadLine());
+                        if (b == 0)
+                        {
+                            Console.WriteLine("Ошибка. На ноль делить нельзя.");
+                        }
+                        Console.WriteLine($"Частное {a} и {b} равна {a / b}");
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Введите число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine("Введите степень числа: ");
+                        b = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine($"Число {a} в степени {b} равно {Math.Pow(a, b)}");
+                        break;
+
+                    case 6:
+                        Console.WriteLine("Введите число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        if (a >= 0)
+                        {
+                            Console.WriteLine($"Квадратный корень {a} равен {Math.Sqrt(a)}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ошибка. Из отрицательного числа корень не выводится");
+                        }
+                        break;
+
+                    case 7:
+                        Console.WriteLine("Введите число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        Console.WriteLine($"Один процент от числа {a} равен {a * 0,01}");
+                        break;
+
+                    case 8:
+                        float d;
+                        Console.WriteLine("Введите число: ");
+                        a = Convert.ToSingle(Console.ReadLine());
+                        c = a;
+                        while (c > 0)
+                        {
+                            e *= c;
+                            c--;
+                        }
+                        Console.WriteLine($"Факториал числа {a} равен {e}");
+                        e = 1;
+                        break;
+
+                    case 9:
                         break;
 
                     default:
-                        Console.WriteLine("Такой программы нет в списке!");
+                        Console.WriteLine("такой операции нет в списке.");
                         break;
-
                 }
+
             }
         }
     }
